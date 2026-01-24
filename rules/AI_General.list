@@ -1,0 +1,35 @@
+# === [1. 人机校验与环境检测] ===
+DOMAIN-SUFFIX,arkoselabs.com        # OpenAI、GitHub、微软登录必备的拼图/旋转验证
+DOMAIN,challenges.cloudflare.com    # 2026 年最主流的 Cloudflare 零感验证 (不通会导致无限正在验证中)
+DOMAIN,static.cloudflareinsights.com # 用于检测访问者是否为真实浏览器及其指纹环境
+DOMAIN-SUFFIX,hcaptcha.com          # 部分 AI 平台采用的第三方人机校验补充
+
+# === [2. 账号鉴权与安全盾牌] ===
+DOMAIN-SUFFIX,auth0.com             # 全球 AI 行业通用的第三方授权登录与 Token 管理系统
+DOMAIN-SUFFIX,stytch.com            # 身份认证辅助域名，防止登录状态意外掉线
+DOMAIN-SUFFIX,identrust.com         # 负责 SSL 安全证书的在线校验，防止“连接不安全”报错
+
+# === [3. 功能分发与灰度测试] ===
+DOMAIN,api.statsig.com              # 决定你是否能用上 GPT-5.2、Claude 4.5 等新功能的权限控制中心
+DOMAIN-SUFFIX,statsigapi.net        # 功能开关分发域名
+DOMAIN-SUFFIX,featuregates.org      # 功能开关分发域名
+DOMAIN-SUFFIX,launchdarkly.com      # 功能开关分发域名
+
+# === [4. 支付网关与订阅管理] ===
+DOMAIN-SUFFIX,stripe.com            # 全球 AI 充值/订阅 Plus 唯一的支付通道 (封锁此项会导致支付失败)
+DOMAIN,pay.google.com               # 通过 Google 渠道进行内购或订阅时的验证接口
+
+# === [5. 静态资源与全球加速] ===
+DOMAIN-SUFFIX,amazonaws.com         # AI 平台存放大量模型资源、用户图片、文档的 AWS 存储桶
+DOMAIN-SUFFIX,cloudflare.com        # 通用防火墙与边缘加速节点
+DOMAIN-SUFFIX,algolia.net           # 提供站内全局搜索与联想建议的后端服务
+DOMAIN-SUFFIX,wp.com                # 负责加载 AI 帮助文档、博客及部分静态图片
+
+# === [6. 性能监控与故障排错] ===
+DOMAIN-SUFFIX,sentry.io             # 后台错误收集系统 (拦截后可能导致点击“发送”按钮无响应)
+DOMAIN-SUFFIX,browser-intake-datadoghq.com # Datadog 错误收集与性能监控
+DOMAIN-SUFFIX,segment.io            # Segment 埋点与数据收集
+
+# === [7. 在线支持与客服] ===
+DOMAIN-SUFFIX,intercom.io           # 网页右下角的即时通讯弹窗及帮助中心资源
+DOMAIN-SUFFIX,intercomcdn.com       # Intercom 静态资源加载
