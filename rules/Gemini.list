@@ -1,0 +1,14 @@
+# === [Google Gemini 纯专有业务] ===
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,gemini.google
+DOMAIN-SUFFIX,aistudio.google.com
+DOMAIN,ai.google.dev
+DOMAIN,makersuite.google.com
+DOMAIN-SUFFIX,generativeai.google
+DOMAIN-SUFFIX,notebooklm.google
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,deepmind.google
+DOMAIN-SUFFIX,colab.google.com
+DOMAIN-SUFFIX,colab.research.google.com
+DOMAIN-SUFFIX,developerprofiles.google.com
+DOMAIN,proactivebackend-pa.googleapis.com
