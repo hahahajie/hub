@@ -1,6 +1,7 @@
 # === [Microsoft Copilot 纯专有业务] ===
 DOMAIN,copilot.microsoft.com
 DOMAIN-SUFFIX,copilot.microsoftapp.net
+DOMAIN,www.bing.com
 DOMAIN,sydney.bing.com
 DOMAIN-SUFFIX,bing.com
 DOMAIN,services.bingapis.com
