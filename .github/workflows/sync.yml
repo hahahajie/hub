@@ -1,0 +1,60 @@
+name: Sync Rules to Gitee
+
+on:
+  schedule:
+    - cron: '0 3 * * *'   # 每天凌晨 3 点执行
+  workflow_dispatch:       # 允许手动触发
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download rule files
+        run: |
+          wget -O adrules_domainset.txt https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules_domainset.txt
+          wget -O Ai.yaml https://ddgksf2013.top/filter/Ai.yaml
+          wget -O Emby.yaml https://raw.githubusercontent.com/ddgksf2013/Filter/master/Emby.yaml
+          wget -O BiliBili.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml
+          wget -O Bahamut.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
+          wget -O GlobalMedia_Classical.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml
+          wget -O Apple_Classical.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Classical.yaml
+          wget -O GitHub.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml
+          wget -O Microsoft.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
+          wget -O Google.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml
+          wget -O Telegram.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
+          wget -O Twitter.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.yaml
+          wget -O Game.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.yaml
+          wget -O ProxyLite.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ProxyLite/ProxyLite.yaml
+          wget -O Direct.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml
+          wget -O Lan.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml
+          wget -O Download.yaml https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml
+          wget -O clash-rule-provider.yml https://raw.githubusercontent.com/soffchen/GeoIP2-CN/release/clash-rule-provider.yml
+
+          wget -O qx.conf https://raw.githubusercontent.com/Cats-Team/AdRules/main/qx.conf
+          wget -O Unbreak.list https://raw.githubusercontent.com/ddgksf2013/Filter/master/Unbreak.list
+          wget -O WeChat.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/WeChat/WeChat.list
+          wget -O ZJdirect.list https://raw.githubusercontent.com/hahahajie/hub/refs/heads/main/rules/ZJdirect.list
+          wget -O AppleIntelligence.list https://raw.githubusercontent.com/ddgksf2013/Filter/refs/heads/master/AppleIntelligence.list
+          wget -O GoogleVoice.list https://raw.githubusercontent.com/ddgksf2013/Filter/master/GoogleVoice.list
+          wget -O GitHub.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/QuantumultX/GitHub/GitHub.list
+          wget -O TikTok.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/TikTok/TikTok.list
+          wget -O Spotify.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Spotify/Spotify.list
+          wget -O Streaming.list https://raw.githubusercontent.com/ddgksf2013/Filter/master/Streaming.list
+          wget -O StreamingSE.list https://raw.githubusercontent.com/ddgksf2013/Filter/master/StreamingSE.list
+          wget -O Apple.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Apple/Apple.list
+          wget -O Microsoft.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Microsoft/Microsoft.list
+          wget -O Google.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Google/Google.list
+          wget -O Speedtest.list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Speedtest/Speedtest.list
+          wget -O Proxy.list https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Proxy.list
+          wget -O ASN.China.list https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/ASN.China.list
+
+      - name: Push to Gitee
+        run: |
+          git init
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update rules"
+          git branch -M master
+          git remote add gitee https://hahahajie:${{ secrets.GITEE_TOKEN }}@gitee.com/hahahajie/rules.git
+          git push -f gitee master
